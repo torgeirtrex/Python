@@ -1,0 +1,20 @@
+{
+  "1": {
+    "question": "Who won Euro 2016 football championship?:\n(a) Germany\n(b) Spain\n(c) Russia\n(d) Portugal\n",
+    "answer": "d",
+    "more_info": "https://en.wikipedia.org/wiki/UEFA_Euro_2016",
+    "user_response": "None"
+  },
+  "2": {
+    "question": "What was the name of the Vice President in The Clinton Administration \n(a) Al Gore\n(b) Dick Cheney\n(c) Mike Pence\n(d) Joe Biden\n",
+    "answer": "a",
+    "more_info": "https://en.wikipedia.org/wiki/Al_Gore",
+    "user_response": "None"
+  },
+  "3": {
+    "question": "Which of these companies are owned by Google?\n(a) LinkedIn\n(b) Alibaba\n(c) Snapchat\n(d) Youtube\n",
+    "answer": "d",
+    "more_info": "https://en.wikipedia.org/wiki/Google",
+    "user_response": "None"
+  }
+}
