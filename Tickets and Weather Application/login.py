@@ -85,9 +85,11 @@ def open():
 
 	btn2 = tk.Button(top, text="Close window", command=top.destroy).pack()
 
-
 def openfile():
 	os.system('python skrivtilfil.py')
+
+def getflights():
+	os.system('python getflights.py')
 
 #lbl = Label(top, text="Hello World").pack
 
@@ -105,7 +107,7 @@ frame.place(relx=0.5, rely=0.1, relwidth=0.75, relheight=0.1, anchor='n')
 actionframe = tk.Frame(root, bg='#0059b3', bd=5)
 actionframe.place(relx=0.5, rely=0.2, relwidth=0.75, relheight=0.07, anchor='n')
 
-orderbutton = tk.Button(actionframe, text="Order flight")
+orderbutton = tk.Button(actionframe, text="Find flight", command=getflights)
 orderbutton.place(relx=0.7, relheight=1, relwidth=0.3)
 
 registerbutton = tk.Button(actionframe, text="Register", command=openfile)
