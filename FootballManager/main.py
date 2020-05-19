@@ -1,6 +1,6 @@
 # https://www.youtube.com/watch?v=jO9BM5pa398 2 hours tutorial with PyAndy
 from leaguefm import League
-from teamfm import Team
+from teamfm import Team, generate_teams
 from playerfm import generate_player, Player
 from managerfm import Manager
 import random
@@ -18,14 +18,11 @@ def main():
     for i in range(100):
         players.append(generate_player())
 
-        # Set ut teams manually
-    teams = [
-        Team('Chelsea'),
-        Team('Man City'),
-        Team('Arsenal'),
-        Team('West Ham'),
-        Team('Hull City'),
-    ]
+        # Define league size by number of teams
+    teams = []
+
+    for i in range(6):
+        teams.append(generate_teams())
 
     for team in teams:
         for player_num in range(11):
@@ -33,7 +30,6 @@ def main():
             selected_player = random.choice(players)
             team.players.append(selected_player)
             players.remove(selected_player)
-
 
 
     first_league = League('Premiership League')

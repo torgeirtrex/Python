@@ -34,3 +34,4 @@ class Manager:
         for player in self.team.players:
             print(player)
 
+

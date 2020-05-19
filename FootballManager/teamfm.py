@@ -1,5 +1,6 @@
 import random
 from helpers import goals_scored
+from openpyxl import load_workbook
 
 class Team:
     '''
@@ -32,6 +33,21 @@ class Team:
 
     def __str__(self):
         return '{} {}'.format(self.name, self.rating())
+
+
+def generate_teams():
+        # Import player names from external file
+
+        wb = load_workbook('TeamImportFM.xlsx')
+        ws = wb.get_sheet_by_name('Ark1')
+        column = ws['A']
+        team_names = [column[x].value for x in range(len(column))]
+
+        team_name = random.choice(team_names)
+
+        teamname = '{}'.format(team_name)
+        return Team(teamname)
+
 
 class Game:
     '''
