@@ -14,7 +14,6 @@ class League:
         self.name = 'League 1'
         self.teams = []
 
-
     def set_teams(self, teams):
         self.teams = teams
 
@@ -23,7 +22,7 @@ class League:
         Play a round
         '''
 
-        print('Round begins')
+        print('/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ \nRound begins')
         num_teams = len(self.teams)
         num_games = num_teams // 2
 
@@ -39,26 +38,37 @@ class League:
             game.play()
             self.resolve_game(game)
 
-
         print('Round ends')
+
+        'print(game.countgoalshome())'
+        'print(game.countgoalsaway())'
 
         #ladder status
         self.ladder()
 
     def ladder(self):
-        for team in sorted(self.teams, key=lambda t: t.wins):
-            print('{} {} wins'.format(team, team.wins))
+        for team in sorted(self.teams, key=lambda x: x.wins, reverse=True, ):
+            print('{} Wins:{} Draws:{} Losses:{} Total Points:{}'.format(team, team.wins, team.draws,
+                                                                                       team.losses, team.total_points,
+                                                                                       ))
 
     def resolve_game(self, game):
-        if game.home_team_won:
+        'Work in progress with goals scored  - play()[0]'
+        if game.home_team_draw:
+            game.home_team.draws += 1
+            game.away_team.draws += 1
+            game.home_team.total_points += 1
+            game.away_team.total_points += 1
+        elif game.home_team_won:
             #home team won
             game.home_team.wins += 1
             game.away_team.losses += 1
-
+            game.home_team.total_points += 3
         else:
             #away team won
             game.away_team.wins += 1
             game.home_team.losses += 1
+            game.away_team.total_points += 3
 
 
         game.home_team.pay_players()

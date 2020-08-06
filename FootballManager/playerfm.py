@@ -27,16 +27,13 @@ def generate_player():
 #   first_names2 = df['A'].tolist()
     wb = load_workbook('PlayersFMimport.xlsx')
     ws = wb.get_sheet_by_name('Ark1')
-    column = ws['A']
-    first_names = [column[x].value for x in range(len(column))]
-    '''
-    first_names = [
-        'Ole', 'Petter', 'Jan', 'Per', 'Frode'
-    ]
-    '''
-    first_name = random.choice(first_names)
-    last_name = random.choice(first_names)
+    column = ws['D']
+    playernames = [column[x].value for x in range(len(column))]
 
-    full_name = '{} {}'.format(first_name, last_name)
+    player_name =  random.choice(playernames)
+    'player_name = random.shuffle(playernames)'
+    'last_name = random.choice(last_names)'
+
+    full_name = '{}'.format(player_name)
     skill = 10 + random.randint(0, 90)
     return Player(full_name, skill)

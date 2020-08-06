@@ -16,6 +16,10 @@ class Team:
 
         self.wins = 0
         self.losses = 0
+        self.draws = 0
+        self.total_points = 0
+        'self.goalsseasonhometeam = self.game.play()[0]'
+        'self.goalsagainstseason = 0'
 
         self.money = 1000000
 
@@ -58,9 +62,10 @@ class Game:
         self.league = league
         self.home_team = home_team
         self.away_team = away_team
-        self.home_team_goals = 0
 
         self.home_team_won = None
+        self.home_team_draw = None
+        'self.goalsawayteam = 0'
 
         print('{} vs. {}'.format(self.home_team, self.away_team))
 
@@ -73,28 +78,36 @@ class Game:
         goalshometeam = self.goals_scored(self.home_team.rating())
         goalsawayteam = self.goals_scored(self.away_team.rating())
 
-        print(f"Home team scored {goalshometeam}")
-        print(f"Away team scored {goalsawayteam}")
+        print('{}'.format(self.home_team), goalshometeam, '-', '{}'.format(self.away_team), goalsawayteam)
+        '''print(f"Home team scored {goalshometeam}")'''
 
-        if self.home_team.rating() > self.away_team.rating():
+        'self.goalsseasonhometeam += goalshometeam'
+        if goalshometeam == goalsawayteam:
+            print('Match is a draw')
+            self.home_team_draw = True
+        elif goalshometeam > goalsawayteam:
             print('{} wins'.format(self.home_team))
             self.home_team_won = True
-            self.home_team_goals = random.randint(1, 5)
-            print(self.home_team, 'scores {} goals'.format(self.home_team_goals))
+            self.home_team_goals = goalshometeam
         else:
             print('{} wins.'.format(self.away_team))
             self.home_team_won = False
-
-
         print('Play ends')
+        return goalshometeam, goalsawayteam
 
-    def countgoals(self):
-        goalcounter = self.home_team_goals
+
+    def countgoalshome(self):
+        goalcounterhome = self.play()[0]
+        return goalcounterhome
+
+    def countgoalsaway(self):
+        goalcounteraway = self.play()[1]
+        return goalcounteraway
 
 #Function to let rating influence goals scored but add an element of luck to goalscoring
     def goals_scored(self, rating):
         # rating * random number between 1 to 5 / rating
-        return int((rating * random.randint(1, 5) / rating))
+        return int((rating * random.randint(0, 5) / rating))
 #TO DO
     def print_menu(self):
         print('1. Select to view your squad')
